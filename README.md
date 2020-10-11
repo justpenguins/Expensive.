@@ -12,7 +12,14 @@ unnecessary, impulse driven purchases such as fast food, clothing, subscriptions
 With the cost living continuing to rise and wages not rising to meet the cost, I hope that this application
 will allow people to give a second sober thought about spending money impulsively.
 
-**bold**
+
+### User Stories
+
+- As a user, I want to be able to add expenses to my list of daily expenses
+- As a user, I want to be able to remove expenses from the list of daily expenses
+- As a user, I want to be able to set the level of reminder 
+- As a user, I want to be able to receive feedback for my spending habits
+- As a user, I want to be able to see a list of all of my expenses, along with the details of the expense
 
 
 
