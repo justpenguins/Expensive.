@@ -1,0 +1,52 @@
+package model;
+
+import java.util.ArrayList;
+
+public class Account {
+
+    private String accountName; // Name of Account holder
+    private int accountId; // Identifier of account
+    private ArrayList<Expense> listOfExpenses; // List of Expenses associated with the account
+
+    // EFFECTS: Make a new account, list of expenses is empty
+    public Account(String name) {
+        accountName = name;
+        accountId = accountId + 1;
+        listOfExpenses = new ArrayList<>();
+    }
+
+    // REQUIRES:
+    // MODIFIES:
+    // EFFECTS: Add an expense to the list of expenses
+    public void addExpense(Expense expense) {
+        listOfExpenses.add(expense);
+    }
+
+    // REQUIRES:
+    // MODIFIES:
+    // EFFECTS: Removes the expense from the list of Expenses.
+    public void removeExpense(Expense expense) {
+        listOfExpenses.remove(expense);
+    }
+
+    // EFFECTS: Returns the list of expenses;
+    public ArrayList<Expense> showExpenses() {
+        return listOfExpenses;
+    }
+
+    // EFFECTS: Return the length of the size of the list of Expenses
+    public int length() {
+        return listOfExpenses.size();
+    }
+
+    // Getter
+    public String getAcctName() {
+        return accountName;
+    }
+
+    // Getter
+    public int getId() {
+        return accountId;
+    }
+
+}
