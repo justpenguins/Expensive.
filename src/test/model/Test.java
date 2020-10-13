@@ -3,14 +3,16 @@ package model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class AccountTest {
     private Account testAccount;
 
-    Expense testExp1 = new Expense(15.75, "13/09/2020", "Surrey", "Bubble Tea");
-    Expense testExp2 = new Expense(1375.99, "02/10/2020", "Richmond", "Sus birthday gift");
-    Expense testExp3 = new Expense(9.00, "25/05/2008", "Seoul", "SHINee debut album");
+    Expense testExp1 = new Expense(15.75, 1, "13/09/2020", "Surrey", "Bubble Tea");
+    Expense testExp2 = new Expense(1375.99, 2,"02/10/2020", "Richmond", "Sus birthday gift");
+    Expense testExp3 = new Expense(9.00, 3,"25/05/2008", "Seoul", "SHINee debut album");
 
     @BeforeEach
     public void setUpAcct() {
@@ -60,9 +62,46 @@ class AccountTest {
         assertEquals(testAccount.length(), 0);
     }
 
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) return false;
+        if (obj == this) return true;
+        if (obj.getClass() != this.getClass()) return false;
+
+
+        return super.equals(obj);
+    }
+
     @Test
     public void testShowExp() {
+        // show one
+        assertEquals(testAccount.length(), 0);
+        testAccount.addExpense(testExp2);
+        for (int i = 0; i < testAccount.length(); i++) {
+            assertTrue(testAccount.showExpenses().equals(testExp2));
+        }
 
+        // show many
+        for (int i = 0; i < 100; i++) {
+            testAccount.addExpense(testExp3);
+        }
+
+        for (int i = 0; i < 100; i++) {
+            assertTrue(testAccount.showExpenses().equals(testExp3));
+        }
+
+    }
+
+    @Test
+    public void testFindExpense() {
+        testAccount.addExpense(testExp3);
+        testAccount.addExpense(testExp1);
+        testAccount.addExpense(testExp3);
+        testAccount.addExpense(testExp2);
+
+        assertEquals(testAccount.findExpense(2), testExp2);
+        assertEquals(testAccount.findExpense(6), null);
     }
 
     @Test
@@ -78,8 +117,8 @@ class AccountTest {
 
 class ExpensesTest {
 
-    Expense testExp1 = new Expense(15.75, "13/09/2020", "Surrey", "Bubble Tea");
-    Expense testExp2 = new Expense(1375.99, "01/01/2019", "Seattle", "Laptop");
+    Expense testExp1 = new Expense(15.75, 1,"13/09/2020", "Surrey", "Bubble Tea");
+    Expense testExp2 = new Expense(1375.99,1,"01/01/2019", "Seattle", "Laptop");
 
     @Test
     public void testConstructor() {
@@ -88,6 +127,31 @@ class ExpensesTest {
         assertEquals("Surrey", testExp1.getExpLocation());
         assertEquals("Laptop", testExp2.getExpDesc());
         assertEquals(testExp1.getExpID(), 1);
+    }
+
+    @Test
+    public void testGetExpAmt() {
+        assertEquals(testExp2.getExpAmt(),15.75);
+    }
+
+    @Test
+    public void testGetExpDate() {
+        assertEquals(testExp1.getExpDate(), "13/09/2020");
+    }
+
+    @Test
+    public void testGetExpLocation() {
+        assertEquals(testExp2.getExpLocation(), "Seattle");
+    }
+
+    @Test
+    public void testGetExpDesc() {
+        assertEquals(testExp1.getExpDesc(), "Laptop");
+    }
+
+    @Test
+    public void testGetExpId() {
+        assertEquals(testExp2.getExpID(), 2);
     }
 
 }

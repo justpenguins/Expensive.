@@ -8,15 +8,15 @@ public class Expense {
     private String expenseCategory; // Short description of what the expense was for
     private int expenseID;
 
-    // REQUIRES:
+    // REQUIRES: Amount > 0, Date is in the format dd/mm/yyyy
     // MODIFIES:
     // EFFECTS: Constructs an expense
-    public Expense(double amt, String date, String location, String type) {
+    public Expense(double amt, int id, String date, String location, String type) {
         expenseAmount = amt;
         expenseDate = date;
         expenseLocation = location;
         expenseCategory = type;
-        expenseID = expenseID + 1;
+        expenseID = id;
     }
 
     // Getter

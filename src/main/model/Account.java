@@ -34,6 +34,19 @@ public class Account {
         return listOfExpenses;
     }
 
+    // REQUIRES: list not be empty
+    // MODIFIES:
+    // EFFECTS: Finds the expense with the inputted id from the list of Expenses.
+    //          If not found return null
+    public Expense findExpense(int expenseId) {
+        for (Expense expense : listOfExpenses) {
+            if (expenseId == expense.getExpID()) {
+                return expense;
+            }
+        }
+        return null;
+    }
+
     // EFFECTS: Return the length of the size of the list of Expenses
     public int length() {
         return listOfExpenses.size();
