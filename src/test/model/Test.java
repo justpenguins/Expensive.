@@ -118,7 +118,7 @@ class AccountTest {
 class ExpensesTest {
 
     Expense testExp1 = new Expense(15.75, 1,"13/09/2020", "Surrey", "Bubble Tea");
-    Expense testExp2 = new Expense(1375.99,1,"01/01/2019", "Seattle", "Laptop");
+    Expense testExp2 = new Expense(1375.99,2,"01/01/2019", "Seattle", "Laptop");
 
     @Test
     public void testConstructor() {
@@ -131,7 +131,7 @@ class ExpensesTest {
 
     @Test
     public void testGetExpAmt() {
-        assertEquals(testExp2.getExpAmt(),15.75);
+        assertEquals(testExp1.getExpAmt(),15.75);
     }
 
     @Test
@@ -146,7 +146,7 @@ class ExpensesTest {
 
     @Test
     public void testGetExpDesc() {
-        assertEquals(testExp1.getExpDesc(), "Laptop");
+        assertEquals(testExp1.getExpDesc(), "Bubble Tea");
     }
 
     @Test
