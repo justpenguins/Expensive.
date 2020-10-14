@@ -62,33 +62,21 @@ class AccountTest {
         assertEquals(testAccount.length(), 0);
     }
 
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) return false;
-        if (obj == this) return true;
-        if (obj.getClass() != this.getClass()) return false;
-
-
-        return super.equals(obj);
-    }
-
     @Test
     public void testShowExp() {
         // show one
         assertEquals(testAccount.length(), 0);
         testAccount.addExpense(testExp2);
-        for (int i = 0; i < testAccount.length(); i++) {
-            assertTrue(testAccount.showExpenses().equals(testExp2));
-        }
+        assertEquals(testAccount.showExpenses().get(0),testExp2);
+
 
         // show many
         for (int i = 0; i < 100; i++) {
             testAccount.addExpense(testExp3);
         }
 
-        for (int i = 0; i < 100; i++) {
-            assertTrue(testAccount.showExpenses().equals(testExp3));
+        for (int i = 0; i < testAccount.length(); i++) {
+            assertEquals(testAccount.showExpenses().get(1), testExp3);
         }
 
     }
@@ -101,7 +89,7 @@ class AccountTest {
         testAccount.addExpense(testExp2);
 
         assertEquals(testAccount.findExpense(2), testExp2);
-        assertEquals(testAccount.findExpense(6), null);
+        assertNull(testAccount.findExpense(6));
     }
 
     @Test

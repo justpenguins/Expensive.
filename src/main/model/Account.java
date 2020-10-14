@@ -29,7 +29,7 @@ public class Account {
         listOfExpenses.remove(expense);
     }
 
-    // EFFECTS: Returns the list of expenses;
+    // EFFECTS: Returns the list of expenses.
     public ArrayList<Expense> showExpenses() {
         return listOfExpenses;
     }
