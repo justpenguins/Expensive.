@@ -9,8 +9,9 @@ public class Expense {
     private int expenseID;
 
     // REQUIRES: Amount > 0, Date is in the format dd/mm/yyyy
-    // MODIFIES:
-    // EFFECTS: Constructs an expense
+    // MODIFIES: n/a
+    // EFFECTS: Constructs an expense, using inputted amt for expense amount, id for the expense id, and strings
+    //          for the date, location, and short description
     public Expense(double amt, int id, String date, String location, String type) {
         expenseAmount = amt;
         expenseDate = date;

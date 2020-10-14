@@ -1,9 +1,9 @@
 package ui;
 
 
-import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
+
 import model.*;
 
 public class App {
@@ -12,10 +12,13 @@ public class App {
     private int maxLimit;
     private int levelSet = 1;
 
+    // EFFECTS: Runs the app
     public App() {
         startApp();
     }
 
+    // EFFECTS: Processes input
+    // Note: cited from TellerApp
     private void startApp() {
         boolean run = true;
         String command = null;
@@ -37,6 +40,8 @@ public class App {
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: asks user for name, creates account
     private void login() {
         System.out.println("Please enter your name:");
         String acctName = input.next();
@@ -44,50 +49,48 @@ public class App {
         newAccount = new Account(acctName);
     }
 
+    // REQUIRES: n/a
+    // MODIFIES: n/a
+    // EFFECTS: Shows the main menu of options
     private void showMenu() {
         System.out.println("\n");
         System.out.println("Welcome to Expensive.");
         System.out.println("***************************************");
         System.out.println("How can we help you today?");
         System.out.println("\n");
-        System.out.println("a. Add expense");
-        System.out.println("b. Remove expense");
-        System.out.println("c. Show expenses");
-        System.out.println("d. Find expense");
-        System.out.println("e. Get feedback");
-        System.out.println("f. Set alert level");
-        System.out.println("g. Exit application");
+        System.out.println("add. Add expense");
+        System.out.println("rem. Remove expense");
+        System.out.println("show. Show expenses");
+        System.out.println("find. Find expense");
+        System.out.println("get. Get feedback");
+        System.out.println("set. Set alert level");
+        System.out.println("e. Exit application");
     }
 
     // MODIFIES: this
     // EFFECTS: takes in the user input
+    // Cite: TellerApp
     private void doMenu(String option) {
         do {
             switch (option) {
-                case "a":
-                    addExpense();
+                case "add": addExpense();
                     break;
-                case "b":
-                    removeExpense();
+                case "rem": removeExpense();
                     break;
-                case "c":
-                    showExpense();
+                case "show": showExpense();
                     break;
-                case "d":
-                    findExpense();
+                case "find": findExpense();
+                    break;
+                case "get": getFeedback();
+                    break;
+                case "set": setLevel();
                     break;
                 case "e":
-                    getFeedback();
                     break;
-                case "f":
-                    setLevel();
+                default: System.out.println("Selection not valid.");
                     break;
-                case "g":
-                    break;
-                default:
-                    System.out.println("Selection not valid.");
-                    break; }
-        } while (option.equals("g"));
+            }
+        } while (option.equals("e"));
     }
 
     // MODIFIES: this
@@ -128,7 +131,9 @@ public class App {
 
     }
 
-    //
+    // REQUIRES: Expense must be in the list.
+    // MODIFIES: this
+    // EFFECTS: Shows all expenses in the list
     public void showExpense() {
         if (newAccount.showExpenses().isEmpty()) {
             System.out.println("There's nothing here...for now.");
@@ -145,6 +150,9 @@ public class App {
         }
     }
 
+    // REQUIRES: Expense must be in the list.
+    // MODIFIES: this
+    // EFFECTS: Finds an existing expense from the list
     public void findExpense() {
         System.out.println("What's the purchase ID of the expense you would like to find?");
         int findExp = input.nextInt();
@@ -153,7 +161,7 @@ public class App {
     }
 
     // REQUIRES: Selected choice must be 1, 2 or 3
-    // MODIFIES:
+    // MODIFIES: this
     // EFFECTS: Sets the level of the reminder
     public void setLevel() {
         System.out.println("The levels are: ");
@@ -170,23 +178,23 @@ public class App {
 
     // REQUIRES: Must have expenses in your account
     // MODIFIES:
-    // EFFECTS:
+    // EFFECTS: Gives feedback based on level and whether expenses > max size
     public void getFeedback() {
-        String[] reminder1 = {"Let's not spend too much.",
+        String[] reminder1 = {"Let's not spend too much. Think about the future!",
                 "Save some money for a cookie later!",
                 "Did you really have to spend money on that?"};
-
         String[] reminder2 = {"WAI SO EXPENSIVE ONE",
                 "That's so *bleep* expensive! What are you thinking?",
                 "You've really screwed up this time. What on earth have you bought?"};
-
         String[] reminder3 = {"Dishonour on you, dishonour on me, dishonour on you cow, "
                 + "and especially dishonour on your expenses.",
                 "That purchase was so unnecessary that the extra gods are convulsing above us.",
                 "You can retire with the money you have left, if you only plan on living for the next 2 days."};
 
         Random r = new Random();
-        int rand = r.nextInt(reminder1.length);
+        int rand = r.nextInt(reminder1.length); //Cite: W3schools random
+
+        maxLimit = 1;
 
         if (newAccount.showExpenses().size() > maxLimit && levelSet == 1) {
             System.out.println(reminder1[rand]);

@@ -15,15 +15,15 @@ public class Account {
         listOfExpenses = new ArrayList<>();
     }
 
-    // REQUIRES:
-    // MODIFIES:
+    // REQUIRES: n/a
+    // MODIFIES: this
     // EFFECTS: Add an expense to the list of expenses
     public void addExpense(Expense expense) {
         listOfExpenses.add(expense);
     }
 
-    // REQUIRES:
-    // MODIFIES:
+    // REQUIRES: Expense be in the list
+    // MODIFIES: this
     // EFFECTS: Removes the expense from the list of Expenses.
     public void removeExpense(Expense expense) {
         listOfExpenses.remove(expense);
@@ -35,7 +35,7 @@ public class Account {
     }
 
     // REQUIRES: list not be empty
-    // MODIFIES:
+    // MODIFIES: n/a
     // EFFECTS: Finds the expense with the inputted id from the list of Expenses.
     //          If not found return null
     public Expense findExpense(int expenseId) {
