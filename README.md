@@ -17,7 +17,7 @@ will allow people to give a second sober thought about spending money impulsivel
 
 - As a user, I want to be able to add expenses to my list of expenses
 - As a user, I want to be able to remove expenses from the list of expenses
-- As a user, I want to be able to find certain expenses
+- As a user, I want to be able to find certain expenses via an ID
 - As a user, I want to be able to set the level of reminder 
 - As a user, I want to be able to receive feedback for my spending habits
 - As a user, I want to be able to see a list of all of my expenses

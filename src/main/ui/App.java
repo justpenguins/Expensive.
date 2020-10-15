@@ -9,7 +9,6 @@ import model.*;
 public class App {
     private Account newAccount;
     private Scanner input;
-    private int maxLimit;
     private int levelSet = 1;
 
     // EFFECTS: Runs the app
@@ -177,7 +176,7 @@ public class App {
     }
 
     // REQUIRES: Must have expenses in your account
-    // MODIFIES:
+    // MODIFIES: this
     // EFFECTS: Gives feedback based on level and whether expenses > max size
     public void getFeedback() {
         String[] reminder1 = {"Let's not spend too much. Think about the future!",
@@ -194,7 +193,7 @@ public class App {
         Random r = new Random();
         int rand = r.nextInt(reminder1.length); //Cite: W3schools random
 
-        maxLimit = 1;
+        int maxLimit = 1;
 
         if (newAccount.showExpenses().size() > maxLimit && levelSet == 1) {
             System.out.println(reminder1[rand]);
