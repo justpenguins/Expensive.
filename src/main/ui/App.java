@@ -183,12 +183,12 @@ public class App {
     // EFFECTS: Gives feedback based on level and whether expenses > max size
     public void getFeedback() {
         String[] reminder1 = {"Let's not spend too much. Think about the future!",
-                "Save some money for a cookie later!",
+                "Save some money for a chicken nuggets later!",
                 "Did you really have to spend money on that?"};
         String[] reminder2 = {"WAI SO EXPENSIVE ONE",
                 "That's so *bleep* expensive! What are you thinking?",
                 "You've really screwed up this time. What on earth have you bought?"};
-        String[] reminder3 = {"Dishonour on you, dishonour on me, dishonour on you cow, "
+        String[] reminder3 = {"Dishonour on you, dishonour on your family, dishonour on you cow, "
                 + "and especially dishonour on your expenses.",
                 "That purchase was so unnecessary that the extra gods are convulsing above us.",
                 "You can retire with the money you have left, if you only plan on living for the next 2 days."};
