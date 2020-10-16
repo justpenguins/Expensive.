@@ -156,7 +156,10 @@ public class App {
         System.out.println("What's the purchase ID of the expense you would like to find?");
         int findExp = input.nextInt();
 
-        newAccount.findExpense(findExp);
+        Expense foundExp = newAccount.findExpense(findExp);
+
+        System.out.println("There's a special energy about this one. ID: " + foundExp.getExpID());
+        System.out.println("Did you buy: " + foundExp.getExpDesc());
     }
 
     // REQUIRES: Selected choice must be 1, 2 or 3
