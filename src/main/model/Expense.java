@@ -1,5 +1,6 @@
 package model;
 
+//class comment
 public class Expense {
 
     private double expenseAmount; // The mount of the expense

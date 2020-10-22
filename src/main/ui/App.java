@@ -115,7 +115,7 @@ public class App {
     // MODIFIES: this
     // EFFECTS: remove an existing expense from the list
     public void removeExpense() {
-        System.out.println("What's the purchase ID of the expense you would like to remove?");
+        System.out.println("What's the purchase ID of the expense you want to remove?");
         int nextInt = input.nextInt();
         System.out.println("Remove expense? Type y or n");
         String nextChar = input.next();
@@ -163,7 +163,7 @@ public class App {
     }
 
     // REQUIRES: Selected choice must be 1, 2 or 3
-    // MODIFIES: this
+    // MODIFIES: App
     // EFFECTS: Sets the level of the reminder
     public void setLevel() {
         System.out.println("The levels are: ");
@@ -179,7 +179,7 @@ public class App {
     }
 
     // REQUIRES: Must have expenses in your account
-    // MODIFIES: this
+    // MODIFIES: n/a
     // EFFECTS: Gives feedback based on level and whether expenses > max size
     public void getFeedback() {
         String[] reminder1 = {"Let's not spend too much. Think about the future!",
@@ -188,7 +188,7 @@ public class App {
         String[] reminder2 = {"WAI SO EXPENSIVE ONE",
                 "That's so *bleep* expensive! What are you thinking?",
                 "You've really screwed up this time. What on earth have you bought?"};
-        String[] reminder3 = {"Dishonour on you, dishonour on your family, dishonour on you cow, "
+        String[] reminder3 = {"Dishonour on you, dishonour on your family, dishonour on your cow, "
                 + "and especially dishonour on your expenses.",
                 "That purchase was so unnecessary that the extra gods are convulsing above us.",
                 "You can retire with the money you have left, if you only plan on living for the next 2 days."};

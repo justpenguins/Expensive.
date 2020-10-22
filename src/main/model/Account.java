@@ -2,6 +2,7 @@ package model;
 
 import java.util.ArrayList;
 
+//class comment
 public class Account {
 
     private String accountName; // Name of Account holder
