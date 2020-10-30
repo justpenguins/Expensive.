@@ -55,6 +55,7 @@ public class Account implements Writeable {
     }
 
     // Source: JsonSerializationDemo, Workroom.java, line 43
+    // EFFECTS: convert an Account to a JSONObject
     @Override
     public JSONObject toJson() {
         JSONObject jsonObject = new JSONObject();

@@ -25,6 +25,7 @@ public class Expense implements Writeable {
     }
 
     // Source: JsonSerializationDemo Thingy.java class, line 31
+    // EFFECTS: converts a expense to a JSONObject
     @Override
     public JSONObject toJson() {
         JSONObject jsonObject = new JSONObject();
