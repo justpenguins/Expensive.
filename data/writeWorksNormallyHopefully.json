@@ -1,0 +1,20 @@
+{
+   "Expenses": [
+      {
+         "Type": "Replay: 1st Mini Album",
+         "Amount": 9,
+         "ID": 2008,
+         "Date": 9,
+         "Place": "Seoul"
+      },
+      {
+         "Type": "MAMA",
+         "Amount": 30.99,
+         "ID": 2015,
+         "Date": 30.99,
+         "Place": "Seoul"
+      }
+   ],
+   "ID": 6383,
+   "Name": "Sheesh doing this at 4am is not fun"
+}

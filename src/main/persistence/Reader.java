@@ -41,7 +41,7 @@ public class Reader {
 
     // EFFECTS: parses and returns a Account from a JSON file
     public Account parse(JSONObject obj) {
-        String name = obj.getString("Name");
+        String name = obj.getString("name");
         Account acct = new Account(name);
         addExpenses(acct,obj);
         return acct;
@@ -50,7 +50,8 @@ public class Reader {
     // MODIFIES: ac
     // EFFECTS: parses an expense from the JSON object, adds to Account
     private void addExpense(Account ac, JSONObject jsonObject) {
-        Expense expense = new Expense(100.00,2,"01/01/2020","UBC","COFFEE");
+        int id = jsonObject.getInt("id");
+        Expense expense = new Expense(100.00,id,"01/01/2020","UBC","COFFEE");
         ac.addExpense(expense);
     }
 
