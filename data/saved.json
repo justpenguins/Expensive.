@@ -1,11 +1,11 @@
 {
    "Expenses": [{
-      "Type": "hehe",
-      "Amount": 0,
-      "ID": 1,
-      "Date": 0,
-      "Place": "UBC"
+      "Type": "WE",
+      "Amount": 12,
+      "ID": 12,
+      "Date": "02/04/2004",
+      "Location": "Q"
    }],
-   "ID": 1,
-   "Name": "cam"
+   "name": "cam",
+   "ID": 3919
 }

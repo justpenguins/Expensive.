@@ -124,6 +124,8 @@ public class App {
 
         newAccount.addExpense(newExp);
 
+        save();
+
     }
 
     // REQUIRES: Expense must be in the list.
@@ -142,6 +144,8 @@ public class App {
         } else {
             System.out.println("The expense was not deleted.");
         }
+
+        save();
 
     }
 
@@ -162,7 +166,6 @@ public class App {
                 System.out.println("\n");
             }
         }
-        save();
     }
 
     // REQUIRES: Expense must be in the list.
