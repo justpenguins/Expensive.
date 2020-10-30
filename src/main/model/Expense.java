@@ -1,7 +1,10 @@
 package model;
 
+import org.json.JSONObject;
+import persistence.Writeable;
+
 //class comment
-public class Expense {
+public class Expense implements Writeable {
 
     private double expenseAmount; // The mount of the expense
     private String expenseDate; // The date of the expense in dd/mm/yyyy
@@ -19,6 +22,17 @@ public class Expense {
         expenseLocation = location;
         expenseCategory = type;
         expenseID = id;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("Amount", expenseAmount);
+        jsonObject.put("Date",expenseAmount);
+        jsonObject.put("Place",expenseLocation);
+        jsonObject.put("Type",expenseCategory);
+        jsonObject.put("ID",expenseID);
+        return jsonObject;
     }
 
     // Getter

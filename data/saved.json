@@ -1,0 +1,11 @@
+{
+   "Expenses": [{
+      "Type": "hehe",
+      "Amount": 0,
+      "ID": 1,
+      "Date": 0,
+      "Place": "UBC"
+   }],
+   "ID": 1,
+   "Name": "cam"
+}

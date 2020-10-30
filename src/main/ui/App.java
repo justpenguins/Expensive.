@@ -1,18 +1,28 @@
 package ui;
 
 
+import model.*;
+import persistence.Reader;
+import persistence.Writer;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Random;
 import java.util.Scanner;
 
-import model.*;
-
 public class App {
+    private static final String store = "./data/saved.json";
     private Account newAccount;
     private Scanner input;
+    private Writer writer;
+    private Reader reader;
     private int levelSet = 1;
 
     // EFFECTS: Runs the app
     public App() {
+        input = new Scanner(System.in);
+        writer = new Writer(store);
+        reader = new Reader(store);
         startApp();
     }
 
@@ -46,6 +56,8 @@ public class App {
         String acctName = input.next();
 
         newAccount = new Account(acctName);
+
+        System.out.println("Welcome, " + acctName + " . We're gonna save some money or you're going to get roasted.");
     }
 
     // REQUIRES: n/a
@@ -61,6 +73,7 @@ public class App {
         System.out.println("rem. Remove expense");
         System.out.println("show. Show expenses");
         System.out.println("find. Find expense");
+        System.out.println("load. Load previously saved expenses.");
         System.out.println("get. Get feedback");
         System.out.println("set. Set alert level");
         System.out.println("e. Exit application");
@@ -80,12 +93,13 @@ public class App {
                     break;
                 case "find": findExpense();
                     break;
+                case "load": load();
+                    break;
                 case "get": getFeedback();
                     break;
                 case "set": setLevel();
                     break;
-                case "e":
-                    break;
+                case "e": break;
                 default: System.out.println("Selection not valid.");
                     break;
             }
@@ -109,6 +123,7 @@ public class App {
         Expense newExp = new Expense(toAddAmt, toAddId, toAddDate, toAddLocation, toAddDesc);
 
         newAccount.addExpense(newExp);
+
     }
 
     // REQUIRES: Expense must be in the list.
@@ -118,10 +133,10 @@ public class App {
         System.out.println("What's the purchase ID of the expense you want to remove?");
         int nextInt = input.nextInt();
         System.out.println("Remove expense? Type y or n");
-        String nextChar = input.next();
+        char nextChar = input.next().charAt(0);
 
 
-        if (nextChar.equals("y")) {
+        if (nextChar == 'y') {
             Expense toRemove = newAccount.findExpense(nextInt);
             newAccount.removeExpense(toRemove);
         } else {
@@ -147,6 +162,7 @@ public class App {
                 System.out.println("\n");
             }
         }
+        save();
     }
 
     // REQUIRES: Expense must be in the list.
@@ -159,7 +175,7 @@ public class App {
         Expense foundExp = newAccount.findExpense(findExp);
 
         System.out.println("There's a special energy about this one. ID: " + foundExp.getExpID());
-        System.out.println("Did you buy: " + foundExp.getExpDesc());
+        System.out.println("Did you buy " + foundExp.getExpDesc() + " ?");
     }
 
     // REQUIRES: Selected choice must be 1, 2 or 3
@@ -206,6 +222,32 @@ public class App {
             System.out.println(reminder3[rand]);
         } else if (newAccount.showExpenses().size() <= maxLimit) {
             System.out.println("You're doing great, which is very unusual of you. Congratulations?");
+        }
+    }
+
+    // EFFECTS: saves account to file specified
+    // Sourced from JsonSerialization demo, WorkroomApp, line 112
+    public void save() {
+        try {
+            writer.open();
+            writer.write(newAccount);
+            writer.close();
+            System.out.println("Expenses automatically saved.");
+        } catch (FileNotFoundException e) {
+            System.out.println("Expenses not found. That's unfortunate.");
+        }
+
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads account from file
+    // Sourced from JsonSerialization demo WorkroomApp, line 125
+    public void load() {
+        try {
+            newAccount = reader.read();
+            System.out.println("Loaded past expenses.");
+        } catch (IOException e) {
+            System.out.println("Can't read the file.");
         }
     }
 
