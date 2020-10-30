@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
 // Source: JsonSerialization Demo, JsonWriterTest class
-public class WriterTest extends testJson{
+public class WriterTest extends TestJson{
 
     @Test
     void fileNoGood() {
