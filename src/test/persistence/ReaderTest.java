@@ -17,7 +17,7 @@ public class ReaderTest extends testJson{
     public void readerFileNoExist() {
         Reader reader = new Reader("./data/readerFileNoExist.json");
         try {
-            account = reader.read();
+            Account account = reader.read();
             fail("IOException was supposed to be thrown.");
         } catch (IOException e) {
             //expected
@@ -25,14 +25,16 @@ public class ReaderTest extends testJson{
     }
 
     @Test
-    void readerYesExistsTesEmpty() {
-        Reader reader = new Reader("./data/readerYesExistsTesEmpty.json");
+    void readerYesExistsTestEmpty() {
+        Reader reader = new Reader("./data/readerYesExistsTestEmpty.json");
         try {
-            Account account = reader.read();
-            assertEquals("Sheesh", account.getAcctName());
-            assertEquals(0, account.length());
+            tA = reader.read();
+            tA.addExpense(testExp3);
+            tA.addExpense(exoExpense);
+            assertEquals("Sleep", tA.getAcctName());
+            assertEquals(2, tA.length());
         } catch (IOException e) {
-            //fail("Couldn't read from file");
+            fail("Couldn't read from file");
         }
     }
 
@@ -40,13 +42,13 @@ public class ReaderTest extends testJson{
     void readerYesExistsNotEmpty() {
         Reader reader = new Reader("./data/readerYesExistsNotEmpty.json");
         try {
-            Account account = reader.read();
-            assertEquals("sleep", account.getAcctName());
-            List<Expense> exps = account.showExpenses();
-            assertEquals(2, exps.size());
-            testAccount("sleep",account);
+            Account tA = reader.read();
+            assertEquals("Sleep", tA.getAcctName());
+            List<Expense> exps = tA.showExpenses();
+            assertEquals(0, exps.size());
+            testAccount("Sleep",tA);
         } catch (IOException e) {
-            //fail("Couldn't read from file");
+            fail("Couldn't read from file");
         }
     }
 

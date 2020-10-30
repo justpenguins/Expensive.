@@ -40,18 +40,23 @@ public class Reader {
     }
 
     // EFFECTS: parses and returns a Account from a JSON file
-    public Account parse(JSONObject obj) {
-        String name = obj.getString("name");
+    public Account parse(JSONObject jsonObject) {
+        String name = jsonObject.getString("name");
         Account acct = new Account(name);
-        addExpenses(acct,obj);
+        addExpenses(acct, jsonObject);
         return acct;
     }
 
     // MODIFIES: ac
     // EFFECTS: parses an expense from the JSON object, adds to Account
     private void addExpense(Account ac, JSONObject jsonObject) {
-        int id = jsonObject.getInt("id");
-        Expense expense = new Expense(100.00,id,"01/01/2020","UBC","COFFEE");
+        double amt = jsonObject.getInt("Amount");
+        int id = jsonObject.getInt("ID");
+        String date = jsonObject.getString("Date");
+        String place = jsonObject.getString("Location");
+        String type = jsonObject.getString("Type");
+
+        Expense expense = new Expense(amt, id, date, place, type);
         ac.addExpense(expense);
     }
 
@@ -61,8 +66,7 @@ public class Reader {
         JSONArray jsonArray = object.getJSONArray("Expenses");
         for (Object json : jsonArray) {
             JSONObject nextExp = (JSONObject) json;
-            addExpense(ac,nextExp);
-
+            addExpense(ac, nextExp);
         }
     }
 }

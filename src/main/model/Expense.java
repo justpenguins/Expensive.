@@ -24,12 +24,13 @@ public class Expense implements Writeable {
         expenseID = id;
     }
 
+    // Source: JsonSerializationDemo Thingy.java class, line 31
     @Override
     public JSONObject toJson() {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("Amount", expenseAmount);
-        jsonObject.put("Date",expenseAmount);
-        jsonObject.put("Place",expenseLocation);
+        jsonObject.put("Date",expenseDate);
+        jsonObject.put("Location",expenseLocation);
         jsonObject.put("Type",expenseCategory);
         jsonObject.put("ID",expenseID);
         return jsonObject;

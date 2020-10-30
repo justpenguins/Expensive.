@@ -54,15 +54,18 @@ public class Account implements Writeable {
         return null;
     }
 
+    // Source: JsonSerializationDemo, Workroom.java, line 43
     @Override
     public JSONObject toJson() {
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("Name",accountName);
+        jsonObject.put("name",accountName);
         jsonObject.put("ID",accountId);
         jsonObject.put("Expenses",expensesToJson());
         return jsonObject;
     }
 
+    // EFFECTS: converts the ArrayList to a JSONArray
+    // Source: JsonSerializationDemo, Workroom.java, line 51
     public JSONArray expensesToJson() {
         JSONArray listOfExp = new JSONArray();
 
