@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
+// Creates a writer to parse info from account into a JSON format
 // Source: JsonSerialization demo, JsonWriter
 public class Writer {
     private PrintWriter writer;

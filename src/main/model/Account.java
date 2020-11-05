@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 
-//class comment
+// Creates an instance of an account
 public class Account implements Writeable {
 
     private String accountName; // Name of Account holder

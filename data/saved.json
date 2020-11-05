@@ -1,11 +1,20 @@
 {
-   "Expenses": [{
-      "Type": "WE",
-      "Amount": 12,
-      "ID": 12,
-      "Date": "02/04/2004",
-      "Location": "Q"
-   }],
-   "name": "cam",
-   "ID": 3919
+   "Expenses": [
+      {
+         "Type": "Coffee",
+         "Amount": 5.95,
+         "ID": 123,
+         "Date": "01/02/2005",
+         "Location": "UBC"
+      },
+      {
+         "Type": "Steveston",
+         "Amount": 12.3,
+         "ID": 234,
+         "Date": "30/10/2020",
+         "Location": "Waves"
+      }
+   ],
+   "name": "Cam",
+   "ID": 6682
 }

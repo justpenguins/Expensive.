@@ -30,12 +30,12 @@ public class App {
     // Note: cited from TellerApp
     private void startApp() {
         boolean run = true;
-        String command = null;
 
         input = new Scanner(System.in);
 
         login();
 
+        String command = null;
         while (run) {
             showMenu();
             command = input.next();
@@ -73,7 +73,7 @@ public class App {
         System.out.println("rem. Remove expense");
         System.out.println("show. Show expenses");
         System.out.println("find. Find expense");
-        System.out.println("load. Load previously saved expenses.");
+        System.out.println("acc. Save new/load saved expenses.");
         System.out.println("get. Get feedback");
         System.out.println("set. Set alert level");
         System.out.println("e. Exit application");
@@ -93,7 +93,7 @@ public class App {
                     break;
                 case "find": findExpense();
                     break;
-                case "load": load();
+                case "acc": accessSaves();
                     break;
                 case "get": getFeedback();
                     break;
@@ -124,8 +124,6 @@ public class App {
 
         newAccount.addExpense(newExp);
 
-        save();
-
     }
 
     // REQUIRES: Expense must be in the list.
@@ -144,8 +142,6 @@ public class App {
         } else {
             System.out.println("The expense was not deleted.");
         }
-
-        save();
 
     }
 
@@ -193,8 +189,7 @@ public class App {
 
         System.out.println("3 -> Absolute Zingers. Things that would come up about you if you attended a roast battle");
 
-        int choice = input.nextInt();
-        levelSet = choice;
+        levelSet = input.nextInt();
     }
 
     // REQUIRES: Must have expenses in your account
@@ -251,6 +246,23 @@ public class App {
             System.out.println("Loaded past expenses.");
         } catch (IOException e) {
             System.out.println("Can't read the file.");
+        }
+    }
+
+    // MODIFIES: n/a
+    // EFFECTS: Lets users pick between saving or loading a save file
+    public void accessSaves() {
+        System.out.println("Do you wanna save something, or lead something?");
+        System.out.println("Enter *load* or *save*");
+
+        String choice = input.next();
+
+        if (choice.equalsIgnoreCase("load")) {
+            load();
+        } else if (choice.equalsIgnoreCase("save")) {
+            save();
+        } else {
+            System.out.println("That's not a choice. Try again.");
         }
     }
 

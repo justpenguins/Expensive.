@@ -3,7 +3,7 @@ package model;
 import org.json.JSONObject;
 import persistence.Writeable;
 
-//class comment
+// Creates an instance of an expense
 public class Expense implements Writeable {
 
     private double expenseAmount; // The mount of the expense
