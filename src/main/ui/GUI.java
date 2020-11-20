@@ -1,5 +1,7 @@
 package ui;
 
+import model.Account;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -10,7 +12,8 @@ public class GUI extends JFrame implements ActionListener {
     private RemoveExpensePanel rep;
     private SaveLoadPanel slp;
     private ShowExpenses sp;
-    //private JFrame frame;
+
+    private Account account;
 
     private JPanel accountPanel;
 
@@ -23,6 +26,7 @@ public class GUI extends JFrame implements ActionListener {
 
     public GUI() {
         super("Expensive.");
+        account = new Account("account");
         makeFrame();
         setUpPanelsButtons();
         accountPanel();
@@ -154,7 +158,7 @@ public class GUI extends JFrame implements ActionListener {
                 panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
                 panel.setOpaque(true);
 
-                aep = new AddExpensePanel();
+                aep = new AddExpensePanel(account);
                 frame.add(aep);
 
                 frame.getContentPane().add(BorderLayout.CENTER, panel);
@@ -215,7 +219,7 @@ public class GUI extends JFrame implements ActionListener {
                 panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
                 panel.setOpaque(true);
 
-                slp = new SaveLoadPanel();
+                slp = new SaveLoadPanel(account);
                 accountPanel.add(slp);
 
                 frame.getContentPane().add(BorderLayout.CENTER, panel);
@@ -245,8 +249,8 @@ public class GUI extends JFrame implements ActionListener {
                 panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
                 panel.setOpaque(true);
 
-                ShowExpenses showExpenses = new ShowExpenses();
-                accountPanel.add(showExpenses);
+                sp = new ShowExpenses(account, aep);
+                accountPanel.add(sp);
 
                 frame.getContentPane().add(BorderLayout.CENTER, panel);
                 frame.pack();

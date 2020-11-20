@@ -1,11 +1,11 @@
 {
-   "Expenses": [
-     {
-     "Amount": 5.0,
-     "ID": 5,
-     "Notes": "5"
-     }
-   ],
-   "name": "Account",
-   "ID": 5505
+   "Expenses": [{
+      "Type": "Add description here",
+      "Amount": 5,
+      "ID": 5,
+      "Date": "01/01/1900",
+      "Location": "UBC"
+   }],
+   "name": "account",
+   "ID": 8613
 }

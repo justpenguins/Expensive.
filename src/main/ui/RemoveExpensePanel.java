@@ -22,7 +22,7 @@ public class RemoveExpensePanel extends GUI implements ActionListener {
 
     private int idToRemove;
 
-    // EFFECTS: constructs a removeexpense panel
+    // EFFECTS: constructs a removeExpense panel
     public RemoveExpensePanel() {
         makeFrame();
         setUpLabelAndFields();
@@ -67,5 +67,4 @@ public class RemoveExpensePanel extends GUI implements ActionListener {
             System.out.println("Expense not found");
         }
     }
-
 }

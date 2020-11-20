@@ -21,7 +21,8 @@ public class SaveLoadPanel extends JFrame implements ActionListener {
     private Account account;
 
     // EFFECTS: Constructs a save/load panel
-    public SaveLoadPanel() {
+    public SaveLoadPanel(Account account) {
+        this.account = account;
         makeFrame();
         setUpLabelAndFields();
     }
@@ -60,7 +61,7 @@ public class SaveLoadPanel extends JFrame implements ActionListener {
     public void save() throws FileNotFoundException {
         try {
             Writer writer = new Writer("./data/guiSave.json");
-            account = new Account("Account");
+            //account = new Account("Account");
             writer.open();
             writer.write(account);
             writer.close();

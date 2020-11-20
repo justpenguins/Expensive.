@@ -30,16 +30,14 @@ public class AddExpensePanel extends JFrame {
     private int idToInput;
 
     // EFFECTS: Constructs an Add Expense Panel
-    public AddExpensePanel() {
-        account = new Account("Your account");
+    public AddExpensePanel(Account account) {
+        this.account = account;
         makeExpFrame();
         addExp();
     }
 
     // EFFECTS: Constructs the frame of the panel
     public void makeExpFrame() {
-        //frame = new JPanel();
-        //add(frame);
         setTitle("AddExpense.");
         setSize(500, 600);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -144,6 +142,10 @@ public class AddExpensePanel extends JFrame {
 
         panel.add(addExpButton);
         add(panel);
+    }
+
+    public String getNote() {
+        return inputNote.getText();
     }
 
 }
