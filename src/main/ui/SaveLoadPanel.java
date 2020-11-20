@@ -11,8 +11,8 @@ import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-
-public class SaveLoadPanel extends GUI implements ActionListener {
+// Represents a Save/load panel
+public class SaveLoadPanel extends JFrame implements ActionListener {
     private JFrame frame;
     private JButton save;
     private JButton load;
@@ -20,11 +20,13 @@ public class SaveLoadPanel extends GUI implements ActionListener {
 
     private Account account;
 
+    // EFFECTS: Constructs a save/load panel
     public SaveLoadPanel() {
         makeFrame();
         setUpLabelAndFields();
     }
 
+    // EFFECTS: makes the frame for the panel
     public void makeFrame() {
         frame = new JFrame("Save/Load Expense");
         frame.setTitle("saveLoadExpense.");
@@ -33,9 +35,9 @@ public class SaveLoadPanel extends GUI implements ActionListener {
         frame.setVisible(true);
     }
 
+    // EFFECTS: sets up the labels,buttons and fields and adds them to the panel.
     public void setUpLabelAndFields() {
         panel = new JPanel(new GridLayout(2,1));
-
         save = new JButton("Save Expenses");
         save.addActionListener(new ActionListener() {
             @Override
@@ -48,20 +50,9 @@ public class SaveLoadPanel extends GUI implements ActionListener {
             }
         });
         panel.add(save);
-
         load = new JButton("Load Expenses");
-        load.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    load();
-                } catch (IOException ioException) {
-                    System.out.println("Could not be loaded");
-                }
-            }
-        });
+        load.addActionListener(this);
         panel.add(load);
-
         frame.add(panel);
     }
 
@@ -90,4 +81,12 @@ public class SaveLoadPanel extends GUI implements ActionListener {
     }
 
 
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        try {
+            load();
+        } catch (IOException ioException) {
+            System.out.println("File not loaded");
+        }
+    }
 }

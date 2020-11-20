@@ -1,11 +1,18 @@
 package ui;
 
+import model.Account;
+import model.Expense;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+// Creates a class that removes expenses
 public class RemoveExpensePanel extends GUI implements ActionListener {
     private JFrame frame;
+
+    private Account account;
 
     private JPanel panel;
     private JButton removeExpense;
@@ -13,11 +20,15 @@ public class RemoveExpensePanel extends GUI implements ActionListener {
     private JLabel question;
     private JTextField questionField;
 
+    private int idToRemove;
+
+    // EFFECTS: constructs a removeexpense panel
     public RemoveExpensePanel() {
         makeFrame();
         setUpLabelAndFields();
     }
 
+    // EFFECTS: makes the frame of the class
     public void makeFrame() {
         frame = new JFrame("Remove Expense");
         frame.setTitle("removeExpense.");
@@ -26,19 +37,35 @@ public class RemoveExpensePanel extends GUI implements ActionListener {
         frame.setVisible(true);
     }
 
+    // EFFECTS: Initializes the label, fields and buttons of class and adds them to the frame
     public void setUpLabelAndFields() {
-        panel = new JPanel(new GridLayout(3,1));
+        panel = new JPanel(new GridLayout(3, 1));
 
         question = new JLabel("What's the ID of what you want to remove?");
-        questionField = new JTextField();
+        questionField = new JTextField("2");
+        idToRemove = Integer.parseInt(questionField.getText());
+
         removeExpense = new JButton("Remove Expense");
+        removeExpense.addActionListener(this);
 
         panel.add(question);
         panel.add(questionField);
         panel.add(removeExpense);
 
         frame.add(panel);
-        panel.setVisible(true);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        account = new Account("Your account");
+        Expense toRemove = account.findExpense(idToRemove);
+
+        if (account.showExpenses().contains(toRemove)) {
+            account.removeExpense(toRemove);
+            System.out.println("Expense removed.");
+        } else {
+            System.out.println("Expense not found");
+        }
     }
 
 }

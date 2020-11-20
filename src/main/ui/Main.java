@@ -6,6 +6,7 @@ public class Main {
     public static void main(String[] args) {
         new GUI();
         //new RemoveExpensePanel();
-        new SaveLoadPanel();
+        //new SaveLoadPanel();
+        //new ShowExpenses();
     }
 }
