@@ -7,14 +7,14 @@ import java.awt.event.ActionListener;
 
 public class GUI extends JFrame implements ActionListener {
     private AddExpensePanel aep;
+    private RemoveExpensePanel rep;
+    private SaveLoadPanel slp;
     private JFrame frame;
 
     private JPanel accountPanel;
     private JPanel removeExp;
     private JPanel showExp;
     private JPanel saveLoad;
-    private JPanel feedback;
-    private JPanel setLevel;
 
     private JButton addExpButton;
     private JButton revExpButton;
@@ -32,7 +32,6 @@ public class GUI extends JFrame implements ActionListener {
         makeFrame();
         setUpPanelsButtons();
         accountPanel();
-        addPanel();
     }
 
     public void makeFrame() {
@@ -43,14 +42,16 @@ public class GUI extends JFrame implements ActionListener {
         frame.setVisible(true);
     }
 
+    public void makeLabel(JLabel label, String name) {
+        label = new JLabel(name);
+        accountPanel.add(label);
+    }
+
     public void setUpPanelsButtons() {
-        CardLayout cardLayout = new CardLayout();
-        aep = new AddExpensePanel();
-        accountPanel = new JPanel(cardLayout);
+        cardLayout = new CardLayout();
+        accountPanel = new JPanel();
         removeExp = new JPanel();
         saveLoad = new JPanel();
-        feedback = new JPanel();
-        setLevel = new JPanel();
 
         addExpButton = new JButton();
         revExpButton = new JButton();
@@ -59,40 +60,37 @@ public class GUI extends JFrame implements ActionListener {
         setFeedbackButton = new JButton();
     }
 
-    public void addPanel() {
-        accountPanel.add(aep, "addExp");
-    }
-
-
-    public void makeButton(JButton button, String name) {
-        button = new JButton(name);
-        accountPanel.add(button);
-        button.addActionListener(this);
-    }
-
-    public void makeLabel(JLabel label, String name) {
-        label = new JLabel(name);
-        accountPanel.add(label);
-    }
 
     // set button method
     // create class, construct object set new class visible, dispose current screen
     public void accountPanel() {
-        makeLabel(name, "Welcome!");
-        makeButton(addExpButton,"Add expenses");
-        addExpButton.addActionListener(e -> cardLayout.show(accountPanel,"addExp"));
 
-        makeButton(revExpButton, "Remove Expenses");
-        revExpButton.setActionCommand("remExpButton");
+        addExpButton = new JButton("Add Expenses");
+        accountPanel.add(addExpButton);
+        addExpButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                addExpense();
+            }
+        });
 
-        makeButton(savButton, "Save/Load Expenses");
-        savButton.setActionCommand("saveExpButton");
+        revExpButton = new JButton("Remove Expenses");
+        accountPanel.add(revExpButton);
+        revExpButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                removeExpense();
+            }
+        });
 
-        makeButton(getFeedbackButton, "Get Feedback");
-        getFeedbackButton.setActionCommand("getButton");
-
-        makeButton(setFeedbackButton, "Set Feedback");
-        setFeedbackButton.setActionCommand("setExpButton");
+        savButton = new JButton("Save/Load Expenses");
+        accountPanel.add(savButton);
+        savButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                saveLoadExpenses();
+            }
+        });
 
         funsies = new JButton("funsies");
         accountPanel.add(funsies);
@@ -103,6 +101,7 @@ public class GUI extends JFrame implements ActionListener {
                 troll();
             }
         });
+
         frame.add(accountPanel);
     }
 
@@ -139,12 +138,98 @@ public class GUI extends JFrame implements ActionListener {
         });
     }
 
+    public void addExpense() {
 
+        EventQueue.invokeLater(new Runnable() {
+
+            @Override
+            public void run() {
+                JFrame frame = new JFrame("Surprise!");
+                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                try {
+                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                JPanel panel = new JPanel();
+                panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+                panel.setOpaque(true);
+
+                aep = new AddExpensePanel();
+                frame.add(aep);
+
+                frame.getContentPane().add(BorderLayout.CENTER, panel);
+                frame.pack();
+                frame.setLocationByPlatform(true);
+                frame.setVisible(true);
+                frame.setResizable(false);
+            }
+        });
+
+    }
+
+    public void removeExpense() {
+
+        EventQueue.invokeLater(new Runnable() {
+
+            @Override
+            public void run() {
+                JFrame frame = new JFrame("Surprise!");
+                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                try {
+                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                JPanel panel = new JPanel();
+                panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+                panel.setOpaque(true);
+
+                rep = new RemoveExpensePanel();
+                accountPanel.add(rep);
+
+                frame.getContentPane().add(BorderLayout.CENTER, panel);
+                frame.pack();
+                frame.setLocationByPlatform(true);
+                frame.setVisible(true);
+                frame.setResizable(false);
+            }
+        });
+
+    }
+
+    public void saveLoadExpenses() {
+
+        EventQueue.invokeLater(new Runnable() {
+
+            @Override
+            public void run() {
+                JFrame frame = new JFrame("Surprise!");
+                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                try {
+                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                JPanel panel = new JPanel();
+                panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+                panel.setOpaque(true);
+
+                slp = new SaveLoadPanel();
+                accountPanel.add(slp);
+
+                frame.getContentPane().add(BorderLayout.CENTER, panel);
+                frame.pack();
+                frame.setLocationByPlatform(true);
+                frame.setVisible(true);
+                frame.setResizable(false);
+            }
+        });
+
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
-
 
     }
 }

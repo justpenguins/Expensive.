@@ -19,12 +19,11 @@ public class AddExpensePanel extends GUI implements ActionListener {
     private JTextField inputLoc;
     private JTextField inputNote;
 
-    protected JPanel panel;
+    private JPanel panel;
 
     private CardLayout cardLayout;
 
     public AddExpensePanel() {
-        panel = new JPanel();
         makeExpFrame();
         addExp();
     }
@@ -33,40 +32,35 @@ public class AddExpensePanel extends GUI implements ActionListener {
         frame = new JFrame("Add Expense");
         frame.setTitle("AddExpense.");
         frame.setSize(500, 600);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setVisible(true);
     }
-
-    public void makeLabel(JLabel label, String name) {
-        label = new JLabel(name);
-        panel.add(label);
-    }
-
-    public void makeTF(JTextField field) {
-        field = new JTextField();
-        panel.add(field);
-    }
-
 
     public void addExp() {
+        panel = new JPanel();
         amount = new JLabel("How much?");
-        amount.add(panel);
+        inputAmt = new JTextField();
+        inputAmt.setBounds(10,20,165,20);
+        panel.add(amount);
+        panel.add(inputAmt);
 
-        makeLabel(id, "Purchase ID");
-        makeTF(inputID);
+        id = new JLabel("Purchase ID");
+        inputID = new JTextField();
+        panel.add(id);
+        panel.add(inputID);
 
-        makeLabel(date, "When did you buy it? (dd/mm/yyyy)");
-        makeTF(inputDate);
+        notes = new JLabel("Notes: ");
+        inputNote = new JTextField();
+        panel.add(notes);
+        panel.add(inputNote);
 
-        makeLabel(location, "Where did you buy it?");
-        makeTF(inputLoc);
-
-        makeLabel(notes, "Additional Notes: ");
-        makeTF(inputNote);
+        JButton goBack = new JButton("Home");
+        panel.add(goBack);
 
         JButton addExpButton = new JButton("Add Expense");
+
         panel.add(addExpButton);
         frame.add(panel);
-
     }
 
     @Override
