@@ -12,20 +12,12 @@ public class GUI extends JFrame implements ActionListener {
     private JFrame frame;
 
     private JPanel accountPanel;
-    private JPanel removeExp;
-    private JPanel showExp;
-    private JPanel saveLoad;
 
     private JButton addExpButton;
     private JButton revExpButton;
     private JButton savButton;
-    private JButton getFeedbackButton;
-    private JButton setFeedbackButton;
     private JButton funsies;
 
-    private JLabel name;
-
-    private CardLayout cardLayout;
 
     public GUI() {
         super("Expensive.");
@@ -42,30 +34,17 @@ public class GUI extends JFrame implements ActionListener {
         frame.setVisible(true);
     }
 
-    public void makeLabel(JLabel label, String name) {
-        label = new JLabel(name);
-        accountPanel.add(label);
-    }
 
     public void setUpPanelsButtons() {
-        cardLayout = new CardLayout();
         accountPanel = new JPanel();
-        removeExp = new JPanel();
-        saveLoad = new JPanel();
 
-        addExpButton = new JButton();
-        revExpButton = new JButton();
-        savButton = new JButton();
-        getFeedbackButton = new JButton();
-        setFeedbackButton = new JButton();
+        addExpButton = new JButton("Add Expense");
+        revExpButton = new JButton("Remove Expense");
+        savButton = new JButton("Save/load Expense");
+        funsies = new JButton("Don't click here");
     }
 
-
-    // set button method
-    // create class, construct object set new class visible, dispose current screen
-    public void accountPanel() {
-
-        addExpButton = new JButton("Add Expenses");
+    public void button1() {
         accountPanel.add(addExpButton);
         addExpButton.addActionListener(new ActionListener() {
             @Override
@@ -73,8 +52,9 @@ public class GUI extends JFrame implements ActionListener {
                 addExpense();
             }
         });
+    }
 
-        revExpButton = new JButton("Remove Expenses");
+    public void button2() {
         accountPanel.add(revExpButton);
         revExpButton.addActionListener(new ActionListener() {
             @Override
@@ -82,8 +62,9 @@ public class GUI extends JFrame implements ActionListener {
                 removeExpense();
             }
         });
+    }
 
-        savButton = new JButton("Save/Load Expenses");
+    public void button3() {
         accountPanel.add(savButton);
         savButton.addActionListener(new ActionListener() {
             @Override
@@ -91,17 +72,22 @@ public class GUI extends JFrame implements ActionListener {
                 saveLoadExpenses();
             }
         });
+    }
 
-        funsies = new JButton("funsies");
+    // set button method
+    // create class, construct object set new class visible, dispose current screen
+    public void accountPanel() {
+        button1();
+        button2();
+        button3();
+
         accountPanel.add(funsies);
-
         funsies.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 troll();
             }
         });
-
         frame.add(accountPanel);
     }
 
@@ -187,6 +173,7 @@ public class GUI extends JFrame implements ActionListener {
 
                 rep = new RemoveExpensePanel();
                 accountPanel.add(rep);
+
 
                 frame.getContentPane().add(BorderLayout.CENTER, panel);
                 frame.pack();

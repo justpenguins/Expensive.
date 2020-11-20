@@ -1,13 +1,14 @@
 package ui;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionListener;
 
 public class RemoveExpensePanel extends GUI implements ActionListener {
     private JFrame frame;
 
-    private JPanel mainpanel;
-    private JButton back;
+    private JPanel panel;
+    private JButton removeExpense;
 
     private JLabel question;
     private JTextField questionField;
@@ -26,18 +27,18 @@ public class RemoveExpensePanel extends GUI implements ActionListener {
     }
 
     public void setUpLabelAndFields() {
-        mainpanel = new JPanel();
-
-        back = new JButton("Home");
-        mainpanel.add(back);
+        panel = new JPanel(new GridLayout(3,1));
 
         question = new JLabel("What's the ID of what you want to remove?");
         questionField = new JTextField();
+        removeExpense = new JButton("Remove Expense");
 
-        mainpanel.add(question);
-        mainpanel.add(questionField);
+        panel.add(question);
+        panel.add(questionField);
+        panel.add(removeExpense);
 
-        frame.add(mainpanel);
+        frame.add(panel);
+        panel.setVisible(true);
     }
 
 }
