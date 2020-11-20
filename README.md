@@ -22,9 +22,10 @@ will allow people to give a second sober thought about spending money impulsivel
 - As a user, I want to be able to receive feedback for my spending habits
 - As a user, I want to be able to see a list of all of my expenses
 
-- As a user, I want to be able to have the application automatically save the number of expenses on the account,
-             after adding or removing an expense
+- As a user, I want to be able to have the application be able to save the number of expenses on the account
 - As a user, I want to be able to call up a previously saved account
+
+- As a user, I want to be able to have a GUI that will allow me to add, remove, save, load, and receive feedback for my expenses
 
 
 

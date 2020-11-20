@@ -33,7 +33,7 @@ public class App {
 
         input = new Scanner(System.in);
 
-        login();
+        //login();
 
         String command = null;
         while (run) {
@@ -53,7 +53,7 @@ public class App {
     // EFFECTS: asks user for name, creates account
     private void login() {
         System.out.println("Please enter your name:");
-        String acctName = input.next();
+        String acctName = input.nextLine();
 
         newAccount = new Account(acctName);
 
@@ -189,7 +189,11 @@ public class App {
 
         System.out.println("3 -> Absolute Zingers. Things that would come up about you if you attended a roast battle");
 
-        levelSet = input.nextInt();
+        if (input.next() != null) {
+            System.out.println("Choose one of the above options.");
+        } else {
+            levelSet = input.nextInt();
+        }
     }
 
     // REQUIRES: Must have expenses in your account
