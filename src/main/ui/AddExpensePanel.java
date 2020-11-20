@@ -20,13 +20,14 @@ public class AddExpensePanel extends JFrame {
 
     private JTextField inputAmt;
     private JTextField inputID;
+    private JTextField inputDate;
+    private JTextField inputLoc;
     private JTextField inputNote;
 
     private JPanel panel;
 
     private Double amtToInput;
     private int idToInput;
-    private String desc;
 
     // EFFECTS: Constructs an Add Expense Panel
     public AddExpensePanel() {
@@ -100,25 +101,42 @@ public class AddExpensePanel extends JFrame {
     // Effects: creates a question asking about the notes of the purchase
     public void question3() {
         notes = new JLabel("Notes: ");
-        inputNote = new JTextField("5");
-        desc = inputNote.getText();
+        inputNote = new JTextField("Add description here");
         panel.add(notes);
         panel.add(inputNote);
     }
 
+    public void question4() {
+        JLabel date = new JLabel("Date");
+        inputDate = new JTextField("01/01/1900");
+        panel.add(date);
+        panel.add(inputDate);
+    }
+
+    public void question5() {
+        JLabel location = new JLabel("Location");
+        inputLoc = new JTextField("UBC");
+        panel.add(location);
+        panel.add(inputLoc);
+
+    }
+
     // Effects: creates and adds things to accountPanel
     public void addExp() {
-        panel = new JPanel(new GridLayout(5,1));
+        panel = new JPanel(new GridLayout(8,2));
 
         question1();
         question2();
+        question4();
+        question5();
         question3();
 
         JButton addExpButton = new JButton("Add Expense");
         addExpButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Expense exp = new Expense(amtToInput, idToInput, "01/01/2002","Vancouver", desc);
+                Expense exp = new Expense(amtToInput, idToInput, inputDate.getText(),
+                        inputLoc.getText(), inputNote.getText());
                 account.addExpense(exp);
                 System.out.println("Expense added.");
             }

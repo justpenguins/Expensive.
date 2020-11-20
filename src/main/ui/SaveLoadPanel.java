@@ -56,10 +56,11 @@ public class SaveLoadPanel extends JFrame implements ActionListener {
         frame.add(panel);
     }
 
+    // EFFECTS: Helper function for saving things to a json file
     public void save() throws FileNotFoundException {
         try {
             Writer writer = new Writer("./data/guiSave.json");
-            account = new Account("Your account");
+            account = new Account("Account");
             writer.open();
             writer.write(account);
             writer.close();
@@ -69,6 +70,7 @@ public class SaveLoadPanel extends JFrame implements ActionListener {
         }
     }
 
+    // EFFECT: helper function for loading things from a json file
     public void load() throws IOException {
         try {
             Reader reader = new Reader("./data/guiSave.json");
