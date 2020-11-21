@@ -40,7 +40,8 @@ public class ShowExpenses extends JFrame {
         JLabel label = new JLabel("Expenses list: ");
 
         DefaultListModel<String> expList = new DefaultListModel<>();
-        expList.addElement(aep.getNote());
+        expList.addElement(aep.getNote()
+                + " ($" + aep.getAmt() + " spent at " + aep.getPlace() + " on " + aep.getDate() + ")");
 
         list = new JList(expList);
 

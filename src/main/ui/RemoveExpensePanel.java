@@ -23,7 +23,8 @@ public class RemoveExpensePanel extends GUI implements ActionListener {
     private int idToRemove;
 
     // EFFECTS: constructs a removeExpense panel
-    public RemoveExpensePanel() {
+    public RemoveExpensePanel(Account account) {
+        this.account = account;
         makeFrame();
         setUpLabelAndFields();
     }
@@ -57,7 +58,6 @@ public class RemoveExpensePanel extends GUI implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        account = new Account("Your account");
         Expense toRemove = account.findExpense(idToRemove);
 
         if (account.showExpenses().contains(toRemove)) {

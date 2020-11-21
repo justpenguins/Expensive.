@@ -7,7 +7,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class GUI extends JFrame implements ActionListener {
+public class GUI extends JFrame {
     private AddExpensePanel aep;
     private RemoveExpensePanel rep;
     private SaveLoadPanel slp;
@@ -24,6 +24,7 @@ public class GUI extends JFrame implements ActionListener {
     private JButton funsies;
 
 
+    // Constructs a GUI
     public GUI() {
         super("Expensive.");
         account = new Account("account");
@@ -32,6 +33,7 @@ public class GUI extends JFrame implements ActionListener {
         accountPanel();
     }
 
+    // EFFECTS: sets boundaries of the frame
     public void makeFrame() {
         setSize(500, 600);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -40,6 +42,7 @@ public class GUI extends JFrame implements ActionListener {
     }
 
 
+    // EFFECTS: sets up the panel buttons
     public void setUpPanelsButtons() {
         accountPanel = new JPanel();
 
@@ -50,6 +53,7 @@ public class GUI extends JFrame implements ActionListener {
         funsies = new JButton("Don't click here");
     }
 
+    // EFFECTS: initializes a button, adds it to the panel
     public void button1() {
         accountPanel.add(addExpButton);
         addExpButton.addActionListener(new ActionListener() {
@@ -60,6 +64,7 @@ public class GUI extends JFrame implements ActionListener {
         });
     }
 
+    // EFFECTS: initializes a button, adds it to the panel
     public void button2() {
         accountPanel.add(revExpButton);
         revExpButton.addActionListener(new ActionListener() {
@@ -70,6 +75,7 @@ public class GUI extends JFrame implements ActionListener {
         });
     }
 
+    // EFFECTS: initializes a button, adds it to the panel
     public void button3() {
         accountPanel.add(savButton);
         savButton.addActionListener(new ActionListener() {
@@ -80,6 +86,7 @@ public class GUI extends JFrame implements ActionListener {
         });
     }
 
+    // EFFECTS: initializes a button, adds it to the panel
     public void button4() {
         accountPanel.add(showButton);
         showButton.addActionListener(new ActionListener() {
@@ -90,8 +97,7 @@ public class GUI extends JFrame implements ActionListener {
         });
     }
 
-    // set button method
-    // create class, construct object set new class visible, dispose current screen
+    // EFFECTS: creates one last button, adds it to the panel
     public void accountPanel() {
         button1();
         button2();
@@ -110,6 +116,7 @@ public class GUI extends JFrame implements ActionListener {
 
     // Source from: https://stackoverflow.com/questions/15513380/how-to-open-a-new-window-by-clicking-a-button
     //              for the parts on opening a new window.
+    // EFFECTS: helper function to navigating between panels
     public void troll() {
 
         EventQueue.invokeLater(new Runnable() {
@@ -141,6 +148,9 @@ public class GUI extends JFrame implements ActionListener {
         });
     }
 
+    // Source from: https://stackoverflow.com/questions/15513380/how-to-open-a-new-window-by-clicking-a-button
+    //              for the parts on opening a new window.
+    // EFFECTS: helper function to navigating between panels
     public void addExpense() {
 
         EventQueue.invokeLater(new Runnable() {
@@ -171,6 +181,9 @@ public class GUI extends JFrame implements ActionListener {
 
     }
 
+    // Source from: https://stackoverflow.com/questions/15513380/how-to-open-a-new-window-by-clicking-a-button
+    //              for the parts on opening a new window.
+    // EFFECTS: helper function to navigating between panels
     public void removeExpense() {
 
         EventQueue.invokeLater(new Runnable() {
@@ -188,7 +201,7 @@ public class GUI extends JFrame implements ActionListener {
                 panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
                 panel.setOpaque(true);
 
-                rep = new RemoveExpensePanel();
+                rep = new RemoveExpensePanel(account);
                 accountPanel.add(rep);
 
 
@@ -202,6 +215,9 @@ public class GUI extends JFrame implements ActionListener {
 
     }
 
+    // Source from: https://stackoverflow.com/questions/15513380/how-to-open-a-new-window-by-clicking-a-button
+    //              for the parts on opening a new window.
+    // EFFECTS: helper function to navigating between panels
     public void saveLoadExpenses() {
 
         EventQueue.invokeLater(new Runnable() {
@@ -232,6 +248,9 @@ public class GUI extends JFrame implements ActionListener {
 
     }
 
+    // Source from: https://stackoverflow.com/questions/15513380/how-to-open-a-new-window-by-clicking-a-button
+    //              for the parts on opening a new window.
+    // EFFECTS: helper function to navigating between panels
     public void showExpenses() {
 
         EventQueue.invokeLater(new Runnable() {
@@ -262,9 +281,4 @@ public class GUI extends JFrame implements ActionListener {
 
     }
 
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-
-    }
 }

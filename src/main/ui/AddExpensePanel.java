@@ -13,7 +13,8 @@ import java.math.BigInteger;
 // Represents a panel where expenses are added
 public class AddExpensePanel extends JFrame {
     private Account account;
-    private JPanel frame;
+    private Expense exp;
+
     private JLabel amount;
     private JLabel id;
     private JLabel notes;
@@ -104,6 +105,7 @@ public class AddExpensePanel extends JFrame {
         panel.add(inputNote);
     }
 
+    // Effects: creates a question asking about the notes of the purchase
     public void question4() {
         JLabel date = new JLabel("Date");
         inputDate = new JTextField("01/01/1900");
@@ -111,6 +113,7 @@ public class AddExpensePanel extends JFrame {
         panel.add(inputDate);
     }
 
+    // Effects: creates a question asking about the notes of the purchase
     public void question5() {
         JLabel location = new JLabel("Location");
         inputLoc = new JTextField("UBC");
@@ -133,7 +136,7 @@ public class AddExpensePanel extends JFrame {
         addExpButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Expense exp = new Expense(amtToInput, idToInput, inputDate.getText(),
+                exp = new Expense(amtToInput, idToInput, inputDate.getText(),
                         inputLoc.getText(), inputNote.getText());
                 account.addExpense(exp);
                 System.out.println("Expense added.");
@@ -144,8 +147,24 @@ public class AddExpensePanel extends JFrame {
         add(panel);
     }
 
+    // getter
     public String getNote() {
         return inputNote.getText();
+    }
+
+    // getter
+    public String getDate() {
+        return inputDate.getText();
+    }
+
+    // getter
+    public String getPlace() {
+        return inputLoc.getText();
+    }
+
+    // getter
+    public String getAmt() {
+        return inputAmt.getText();
     }
 
 }
