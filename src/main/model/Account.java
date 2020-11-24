@@ -100,9 +100,5 @@ public class Account implements Writeable {
         return accountName;
     }
 
-    // Getter
-    public int getId() {
-        return accountId;
-    }
 
 }
