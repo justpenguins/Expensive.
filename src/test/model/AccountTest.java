@@ -1,10 +1,10 @@
 package model;
 
+import Exceptions.NoSuchExpenseException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class AccountTest extends TestInfo{
         private Account testAccount;
@@ -17,7 +17,6 @@ public class AccountTest extends TestInfo{
         @Test
         public void testConstructor() {
             assertEquals( "David",testAccount.getAcctName());
-            assertEquals(1, testAccount.getId());
         }
 
         @Test
@@ -40,8 +39,20 @@ public class AccountTest extends TestInfo{
         public void testRemoveExp() {
             testAccount.addExpense(testExp3);
             assertEquals(testAccount.length(), 1);
-            testAccount.removeExpense(testExp3);
+            try {
+                testAccount.removeExpense(testExp3);
+            } catch (NoSuchExpenseException e) {
+                fail("Not supposed to be caught!");
+            }
             assertEquals(testAccount.length(), 0);
+
+            //test remove no expense
+            try {
+                testAccount.removeExpense(testExp3);
+                fail("Exception supposed to be thrown.");
+            } catch (NoSuchExpenseException e) {
+                // expected
+            }
         }
 
         @Test
@@ -52,7 +63,11 @@ public class AccountTest extends TestInfo{
             assertEquals(143, testAccount.length());
 
             for (int i = 0; i < 143; i++) {
-                testAccount.removeExpense(testExp2);
+                try {
+                    testAccount.removeExpense(testExp2);
+                } catch (NoSuchExpenseException e) {
+                    fail("Not supposed to be caught!");
+                }
             }
             assertEquals(testAccount.length(), 0);
         }
@@ -92,10 +107,6 @@ public class AccountTest extends TestInfo{
             assertEquals(testAccount.getAcctName(), "David");
         }
 
-        @Test
-        public void testGetId() {
-            assertEquals(testAccount.getId(), 1);
-        }
 }
 
 

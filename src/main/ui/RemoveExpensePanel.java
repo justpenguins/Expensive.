@@ -1,5 +1,6 @@
 package ui;
 
+import Exceptions.NoSuchExpenseException;
 import model.Account;
 import model.Expense;
 
@@ -61,7 +62,11 @@ public class RemoveExpensePanel extends GUI implements ActionListener {
         Expense toRemove = account.findExpense(idToRemove);
 
         if (account.showExpenses().contains(toRemove)) {
-            account.removeExpense(toRemove);
+            try {
+                account.removeExpense(toRemove);
+            } catch (NoSuchExpenseException noSuchExpenseException) {
+                System.out.println("You sure you bought that? I don't remember that one...");
+            }
             System.out.println("Expense removed.");
         } else {
             System.out.println("Expense not found");

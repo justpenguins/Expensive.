@@ -1,5 +1,6 @@
 package model;
 
+import Exceptions.NoSuchExpenseException;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import persistence.Writeable;
@@ -32,8 +33,13 @@ public class Account implements Writeable {
     // REQUIRES: Expense be in the list
     // MODIFIES: this
     // EFFECTS: Removes the expense from the list of Expenses.
-    public void removeExpense(Expense expense) {
-        listOfExpenses.remove(expense);
+    public void removeExpense(Expense expense) throws NoSuchExpenseException {
+        if (!listOfExpenses.contains(expense)) {
+            throw new NoSuchExpenseException("This expense does not exist!");
+        } else {
+            listOfExpenses.remove(expense);
+        }
+
     }
 
     // EFFECTS: Returns the list of expenses.

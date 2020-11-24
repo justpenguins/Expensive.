@@ -1,6 +1,7 @@
 package ui;
 
 
+import Exceptions.NoSuchExpenseException;
 import model.*;
 import persistence.Reader;
 import persistence.Writer;
@@ -33,7 +34,7 @@ public class App {
 
         input = new Scanner(System.in);
 
-        //login();
+        login();
 
         String command = null;
         while (run) {
@@ -44,7 +45,11 @@ public class App {
             if (command.equals("e")) {
                 run = false;
             } else {
-                doMenu(command);
+                try {
+                    doMenu(command);
+                } catch (NoSuchExpenseException e) {
+                    System.out.println("That's weird. Let's try again...");
+                }
             }
         }
     }
@@ -82,7 +87,7 @@ public class App {
     // MODIFIES: this
     // EFFECTS: takes in the user input
     // Cite: TellerApp
-    private void doMenu(String option) {
+    private void doMenu(String option) throws NoSuchExpenseException {
         do {
             switch (option) {
                 case "add": addExpense();
@@ -129,7 +134,7 @@ public class App {
     // REQUIRES: Expense must be in the list.
     // MODIFIES: this
     // EFFECTS: remove an existing expense from the list
-    public void removeExpense() {
+    public void removeExpense() throws NoSuchExpenseException {
         System.out.println("What's the purchase ID of the expense you want to remove?");
         int nextInt = input.nextInt();
         System.out.println("Remove expense? Type y or n");
@@ -170,6 +175,7 @@ public class App {
     public void findExpense() {
         System.out.println("What's the purchase ID of the expense you would like to find?");
         int findExp = input.nextInt();
+
 
         Expense foundExp = newAccount.findExpense(findExp);
 
@@ -256,7 +262,7 @@ public class App {
     // MODIFIES: n/a
     // EFFECTS: Lets users pick between saving or loading a save file
     public void accessSaves() {
-        System.out.println("Do you wanna save something, or lead something?");
+        System.out.println("Do you wanna save something, or load something?");
         System.out.println("Enter *load* or *save*");
 
         String choice = input.next();

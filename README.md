@@ -25,7 +25,11 @@ will allow people to give a second sober thought about spending money impulsivel
 - As a user, I want to be able to have the application be able to save the number of expenses on the account
 - As a user, I want to be able to call up a previously saved account
 
-- As a user, I want to be able to have a GUI that will allow me to add, remove, save, load, and receive feedback for my expenses
+- As a user, I want to be able to have a GUI that will allow me to add, remove, save and load my expenses
+
+Phase 4, task 2
+- I made the remove expense method in the Account class robust, so that it would throw an expense when the customer
+  tries to remove an expense that doesn't exist.
 
 
 
