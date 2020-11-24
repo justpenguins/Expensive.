@@ -1,6 +1,6 @@
 package model;
 
-import Exceptions.NoSuchExpenseException;
+import exceptions.NoSuchExpenseException;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import persistence.Writeable;

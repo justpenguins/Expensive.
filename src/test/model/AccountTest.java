@@ -1,6 +1,6 @@
 package model;
 
-import Exceptions.NoSuchExpenseException;
+import exceptions.NoSuchExpenseException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

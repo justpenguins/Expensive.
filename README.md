@@ -30,6 +30,10 @@ will allow people to give a second sober thought about spending money impulsivel
 Phase 4, task 2
 - I made the remove expense method in the Account class robust, so that it would throw an expense when the customer
   tries to remove an expense that doesn't exist.
+  
+ Phase 4, task 3
+ - I don't think there's any sort of major refactoring I could have done, seeing that my code is already very simple as
+   is.
 
 
 

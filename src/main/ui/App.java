@@ -1,7 +1,7 @@
 package ui;
 
 
-import Exceptions.NoSuchExpenseException;
+import exceptions.NoSuchExpenseException;
 import model.*;
 import persistence.Reader;
 import persistence.Writer;
