@@ -59,17 +59,12 @@ public class RemoveExpensePanel extends GUI implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        Expense toRemove = account.findExpense(idToRemove);
 
-        if (account.showExpenses().contains(toRemove)) {
-            try {
-                account.removeExpense(toRemove);
-            } catch (NoSuchExpenseException noSuchExpenseException) {
-                System.out.println("You sure you bought that? I don't remember that one...");
-            }
+        try {
+            account.removeExpense(account.findExpense(idToRemove));
             System.out.println("Expense removed.");
-        } else {
-            System.out.println("Expense not found");
+        } catch (NoSuchExpenseException noSuchExpenseException) {
+            System.out.println("You sure you bought that? I don't remember that one...");
         }
     }
 }

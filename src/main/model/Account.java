@@ -30,7 +30,7 @@ public class Account implements Writeable {
         listOfExpenses.add(expense);
     }
 
-    // REQUIRES: Expense be in the list
+
     // MODIFIES: this
     // EFFECTS: Removes the expense from the list of Expenses.
     public void removeExpense(Expense expense) throws NoSuchExpenseException {
