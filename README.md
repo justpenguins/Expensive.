@@ -32,8 +32,10 @@ Phase 4, task 2
   tries to remove an expense that doesn't exist.
   
  Phase 4, task 3
- - I don't think there's any sort of major refactoring I could have done, seeing that my code is already very simple as
-   is.
+ - I would abstract the panels of the GUI, namely Add, Remove, Show and Load Expenses, into an interface, since they
+   all similar behaviours
+ - I would have also liked to reduce the amount of coupling between the classes. I feel that some code in the
+   model package didn't need to rely on the UI package to function.
 
 
 
