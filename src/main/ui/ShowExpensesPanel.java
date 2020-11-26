@@ -7,9 +7,8 @@ import javax.swing.*;
 import java.awt.*;
 
 // Represents a panel to show the expenses
-public class ShowExpenses extends JFrame {
+public class ShowExpensesPanel extends JFrame {
     private Account account;
-    private Expense expense;
 
     private AddExpensePanel aep;
 
@@ -18,7 +17,7 @@ public class ShowExpenses extends JFrame {
     private JFrame frame;
 
     // EFFECTS: Constructs a show expenses panel
-    public ShowExpenses(Account account, AddExpensePanel aep) {
+    public ShowExpensesPanel(Account account, AddExpensePanel aep) {
         this.aep = aep;
         this.account = account;
         makeFrame();

@@ -11,7 +11,7 @@ public class GUI extends JFrame {
     private AddExpensePanel aep;
     private RemoveExpensePanel rep;
     private SaveLoadPanel slp;
-    private ShowExpenses sp;
+    private ShowExpensesPanel sp;
 
     private Account account;
 
@@ -268,7 +268,7 @@ public class GUI extends JFrame {
                 panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
                 panel.setOpaque(true);
 
-                sp = new ShowExpenses(account, aep);
+                sp = new ShowExpensesPanel(account, aep);
                 accountPanel.add(sp);
 
                 frame.getContentPane().add(BorderLayout.CENTER, panel);
