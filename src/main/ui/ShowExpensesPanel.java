@@ -27,7 +27,7 @@ public class ShowExpensesPanel extends JFrame {
     // EFFECTS: creates the frame for the panel
     public void makeFrame() {
         frame = new JFrame("Show Expenses");
-        frame.setTitle("showExpense.");
+        frame.setTitle("showExpense");
         frame.setSize(500, 600);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setVisible(true);
