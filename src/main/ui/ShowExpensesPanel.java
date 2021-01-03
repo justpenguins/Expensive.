@@ -1,7 +1,7 @@
 package ui;
 
 import model.Account;
-import model.Expense;
+
 
 import javax.swing.*;
 import java.awt.*;
