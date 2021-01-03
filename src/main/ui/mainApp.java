@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.util.Random;
 import java.util.Scanner;
 
-public class App {
+public class mainApp {
     private static final String store = "./data/saved.json";
     private Account newAccount;
     private Scanner input;
